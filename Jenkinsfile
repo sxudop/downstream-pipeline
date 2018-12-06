@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  options {
+    buildDiscarder logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '2', daysToKeepStr: '1', numToKeepStr: '5')
+  }
   triggers {
   eventTrigger(simpleMatch('testingCompleted'))
 }
