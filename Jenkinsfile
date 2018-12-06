@@ -3,7 +3,9 @@
 import groovy.json.JsonOutput
 
 node {
-  
+  properties([
+    buildDiscarder(logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '2', daysToKeepStr: '1', numToKeepStr: '3')),
+])
   try {
     
     stage 'pre-check'
