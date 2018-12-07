@@ -4,11 +4,6 @@ import groovy.json.JsonOutput
 
 node {
   
-  def purgeOldBuilds(arfDays, arfNum, daysToKeep, numToKeep) {
-  properties([
-    buildDiscarder(logRotator(artifactDaysToKeepStr: '$arfDays', artifactNumToKeepStr: '$arfNum', daysToKeepStr: '$daysToKeep', numToKeepStr: '$numToKeep')),
-  ])
- } 
    purgeOldBuilds(1, 5, 1, 4)
 
   try {
@@ -33,6 +28,11 @@ node {
     
     currentBuild.result = "SUCCESS"  
     currentBuild
+    
+    stage 'cleanup'
+    properties([
+    buildDiscarder(logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '4', daysToKeepStr: '1', numToKeepStr: '5')),
+  ])
     
   }
   catch(e) {
