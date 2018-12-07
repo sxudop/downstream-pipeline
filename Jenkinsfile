@@ -5,7 +5,7 @@ import groovy.json.JsonOutput
 def purgeOldBuilds(arfDays, arfNum, daysToKeep, numToKeep) {
 
 properties([
-    buildDiscarder(logRotator(artifactDaysToKeepStr: '$arfDays', artifactNumToKeepStr: '$arfNum', daysToKeepStr: '$daysToKeep', numToKeepStr: '$numToKeep')),
+    buildDiscarder(logRotator(artifactDaysToKeepStr: $arfDays, artifactNumToKeepStr: $arfNum, daysToKeepStr: $daysToKeep, numToKeepStr: $numToKeep)),
 ])
 }
 
