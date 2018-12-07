@@ -4,9 +4,7 @@ import groovy.json.JsonOutput
 
 node {
   
-   purgeOldBuilds(1, 5, 1, 4)
-
-  try {
+   try {
     
     def branch = env.BRANCH_NAME
     def giturl = 'https://github.com/sxudop/CBJ.git'
