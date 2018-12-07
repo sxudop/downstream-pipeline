@@ -28,7 +28,7 @@ node {
     currentBuild
     
     stage 'cleanup'
-     if (env.BRANCH_NAME == 'develop'){
+     if (env.BRANCH_NAME == 'develop') {
     properties([
     buildDiscarder(logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '4', daysToKeepStr: '1', numToKeepStr: '5')),
   ])
