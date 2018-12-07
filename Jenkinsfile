@@ -2,10 +2,16 @@
 
 import groovy.json.JsonOutput
 
-node {
-  properties([
-    buildDiscarder(logRotator(artifactDaysToKeepStr: '1', artifactNumToKeepStr: '2', daysToKeepStr: '1', numToKeepStr: '3')),
+def purgeOldBuilds(arfDays, arfNum, daysToKeep, numToKeep) {
+
+properties([
+    buildDiscarder(logRotator(artifactDaysToKeepStr: '$arfDays', artifactNumToKeepStr: '$arfNum', daysToKeepStr: '$daysToKeep', numToKeepStr: '$numToKeep')),
 ])
+}
+
+node {
+  
+   purgeOldBuilds(1, 5, 1, 4)
 
   try {
     
